@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.Objects;
 
 @Service
-@RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionsService {
 
     @Value("${payStack.api.key}")

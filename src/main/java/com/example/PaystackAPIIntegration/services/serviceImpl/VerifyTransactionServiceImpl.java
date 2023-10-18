@@ -6,6 +6,7 @@ import com.example.PaystackAPIIntegration.request.PayStackRequest;
 import com.example.PaystackAPIIntegration.response.VerifyTransactionsResponse;
 import com.example.PaystackAPIIntegration.services.VerifyTransactions;
 import com.example.PaystackAPIIntegration.utils.Constant;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class VerifyTransactionServiceImpl implements VerifyTransactions {
 
     @Value("${payStack.api.key}")
@@ -29,6 +31,9 @@ public class VerifyTransactionServiceImpl implements VerifyTransactions {
         logger.info("payStackApiKey: {}", payStackApiKey);
         if(reference == null || Objects.equals(reference, "")){
             throw new InvalidReferenceNumberException("Invalid Reference number");
+        }
+        if(payStackApiKey == null){
+
         }
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();

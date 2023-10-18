@@ -35,6 +35,14 @@ public class GlobalErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidAPIkeyExceptions.class)
+    public ResponseEntity<ErrorResponse> handlerForInvalidAPIKeyExceptions(final InvalidAPIkeyExceptions ex) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setMessage(ex.getMessage());
+        errorResponse.setDebugMessage("Invalid API Key");
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(InvalidReferenceNumberException.class)
     public ResponseEntity<ErrorResponse> handlerForInvalidReferenceNumberExceptions(final InvalidReferenceNumberException ex) {
         ErrorResponse errorResponse = new ErrorResponse();
